@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ТУН ТУН ФЕРМА</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" hidden>
+    <div class="hud-group">
+      <div class="pill coins"><span id="coinIco" class="ico">🪙</span><b id="coins">0</b><small id="rate">+0/с</small></div>
+      <div class="pill wave"><span id="waveLabel">ПОДГОТОВКА</span><div class="bar"><i id="waveBar"></i></div></div>
+    </div>
+    <div class="pill farm" title="Здоровье фермы. Ноль — конец игры">
+      <span class="ico">🏚️</span><div class="bar hp"><i id="hpBar"></i></div><b id="hpText">200</b>
+    </div>
+    <div class="hud-group">
+      <div class="pill small" title="Зверята на ферме"><span class="ico">🐾</span><b id="nCritters">0</b></div>
+      <div class="pill small" title="Тун Тун Сахуры (дома + в набеге)"><span class="ico">🪵</span><b id="nSahurs">0</b></div>
+      <div class="pill small" title="Бомбардиро в ангарах"><span class="ico">🐊</span><b id="nPlanes">0</b></div>
+      <button id="btnHome" class="icon-btn" title="К своей ферме (H)">🏠</button>
+      <button id="btnMute" class="icon-btn" title="Звук (M)">🔊</button>
+      <button id="btnPause" class="icon-btn" title="Пауза (Пробел)">⏸</button>
+    </div>
+  </div>
+
+  <div id="nextWave" hidden>
+    <span>Волна <b id="nextNum">1</b> через <b id="nextT">10</b> с</span>
+    <button id="btnNext" title="N">ДАВАЙ СРАЗУ <span id="nextBonus">+0</span> 🪙</button>
+  </div>
+
+  <div id="feed"></div>
+  <aside id="diplo" hidden></aside>
+  <div id="hint" hidden></div>
+  <div id="toolbar" hidden></div>
+  <div id="popup" hidden></div>
+
+  <section id="title" class="screen">
+    <div class="panel">
+      <h1 class="logo"><span>ТУН ТУН</span><span class="l2">ФЕРМА</span></h1>
+      <p class="tagline">выращивай ИИ-зверят, рожай сахуров, дружи или воюй с соседями</p>
+      <div class="howto">
+        <div><b>🏠 Клетка.</b> Засели ИИ Клубнику и ИИ Банана. Двое в клетке несут яйцо, вылупиться может что угодно.</div>
+        <div><b>🛸 Дроны</b> летят со всех сторон: воруют зверят и таранят постройки. Кликай по ним!</div>
+        <div><b>🪵 Сахурня</b> рожает Тун Тун Сахуров, они сами прыгают на дронов с битой.</div>
+        <div><b>🤝 Соседи.</b> Отправь им зверька послом. Родится «свой» — союз. Чужой — война: шли набеги сахуров и Бомбардиро Крокодило. Сломаешь их ферму — заберёшь себе. Захвати всех четверых.</div>
+      </div>
+      <button id="btnPlay" class="big-btn">ИГРАТЬ</button>
+      <p class="best" id="bestLine"></p>
+      <p class="keys">1–5 строить и качать · колесо — зум · ПКМ/WASD — двигать карту · H — домой · Пробел пауза · M звук · F11 фуллскрин</p>
+    </div>
+  </section>
+
+  <section id="pause" class="screen dim" hidden>
+    <div class="panel narrow">
+      <h2 class="logo small">ПАУЗА</h2>
+      <button id="btnResume" class="big-btn">ДАЛЬШЕ</button>
+      <button id="btnQuit" class="big-btn alt">В МЕНЮ</button>
+    </div>
+  </section>
+
+  <section id="over" class="screen dim" hidden>
+    <div class="panel narrow">
+      <h2 class="logo small red">ФЕРМУ<br>РАЗДРОНИЛИ</h2>
+      <div id="overStats" class="stats"></div>
+      <button id="btnAgain" class="big-btn">ЕЩЁ РАЗ</button>
+      <button id="btnMenu" class="big-btn alt">В МЕНЮ</button>
+    </div>
+  </section>
+
+  <section id="win" class="screen dim" hidden>
+    <div class="panel narrow">
+      <h2 class="logo small">ОКРУГА<br>ТВОЯ</h2>
+      <p class="tagline">все четыре соседа захвачены. дроны не кончатся никогда</p>
+      <div id="winStats" class="stats"></div>
+      <button id="btnContinue" class="big-btn">ИГРАТЬ ДАЛЬШЕ</button>
+      <button id="btnWinMenu" class="big-btn alt">В МЕНЮ</button>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="audio.js"></script>
+  <script src="art.js"></script>
+  <script src="diplo.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

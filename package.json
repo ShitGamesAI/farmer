@@ -1,0 +1,13 @@
+{
+  "name": "tuntun-farm",
+  "version": "1.0.0",
+  "description": "Ферма ИИ-зверят под атакой дронов, Тун Тун Сахуры на защите",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^44.5.1"
+  }
+}
